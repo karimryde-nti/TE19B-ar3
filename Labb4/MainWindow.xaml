@@ -1,17 +1,17 @@
-﻿<Window x:Class="Grid.MainWindow"
+﻿<Window x:Class="Labb4.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Grid"
+        xmlns:local="clr-namespace:Labb4"
         mc:Ignorable="d"
-        Title="MainWindow" SizeToContent="Height" Width="400" Background="#EEE">
+Title="MainWindow" SizeToContent="Height" MaxHeight="500" Width="400" Background="#EEE">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -19,15 +19,17 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Label Margin="5" Grid.Row="0" Grid.ColumnSpan="2" FontSize="24">Meddelande</Label>
+        <Image Margin="5" Grid.Row="0" Grid.Column="0"
+        Source="resurser/globe-solid.png" />
+        <Label Margin="5" Grid.Row="0" Grid.Column="1" FontSize="24">Hitta länder</Label>
 
-        <Label Margin="5" Grid.Row="1" Grid.Column="0">Ange epostadress</Label>
+        <Label Margin="5" Grid.Row="1" Grid.Column="0">Ange sökterm</Label>
         <TextBox Margin="5" Grid.Row="1" Grid.Column="1" />
 
-        <Label Margin="5" Grid.Row="2" Grid.Column="0">Ange text</Label>
-        <TextBox Margin="5" Grid.Row="2" Grid.Column="1" MinHeight="50" />
+        <Button Margin="5" Grid.Row="2" Grid.ColumnSpan="2">Sök!</Button>
 
-        <Button Margin="5" Grid.Row="3" Grid.ColumnSpan="2">Skicka!</Button>
+        <Label Margin="5" Grid.Row="3" Grid.Column="0">Matchande länder</Label>
+        <TextBox Margin="5" Grid.Row="3" Grid.Column="1" MinHeight="100" />
 
         <TextBox Margin="5" Grid.Row="4" Grid.ColumnSpan="2" Foreground="#999" IsReadOnly="true"/>
     </Grid>
