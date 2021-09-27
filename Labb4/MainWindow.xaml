@@ -24,13 +24,13 @@ Title="MainWindow" SizeToContent="Height" MaxHeight="500" Width="400" Background
         <Label Margin="5" Grid.Row="0" Grid.Column="1" FontSize="24">Hitta länder</Label>
 
         <Label Margin="5" Grid.Row="1" Grid.Column="0">Ange sökterm</Label>
-        <TextBox Margin="5" Grid.Row="1" Grid.Column="1" />
+        <TextBox Name="rutaSökterm" Margin="5" Grid.Row="1" Grid.Column="1" />
 
         <Button Margin="5" Grid.Row="2" Grid.ColumnSpan="2">Sök!</Button>
 
         <Label Margin="5" Grid.Row="3" Grid.Column="0">Matchande länder</Label>
-        <TextBox Margin="5" Grid.Row="3" Grid.Column="1" MinHeight="100" />
+        <TextBox Name="rutaResultat" Margin="5" Grid.Row="3" Grid.Column="1" MinHeight="100" VerticalScrollBarVisibility="Auto" />
 
-        <TextBox Margin="5" Grid.Row="4" Grid.ColumnSpan="2" Foreground="#999" IsReadOnly="true"/>
+        <TextBlock Name="rutaStatus" Margin="5" Grid.Row="4" Grid.ColumnSpan="2" Foreground="#999" Background="#FFF" Height="20"/>
     </Grid>
 </Window>
