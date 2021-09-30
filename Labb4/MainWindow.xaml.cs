@@ -17,7 +17,7 @@ namespace Labb4
             InitializeComponent();
 
             // Läs in alla rader från textfilen countries.csv
-            rader = File.ReadAllLines("./countries.csv");
+            rader = File.ReadAllLines("./resurser/countries.csv");
         }
 
         /// <summary>
@@ -34,10 +34,11 @@ namespace Labb4
             string sökterm = rutaSökterm.Text;
 
             // Loopa igenom alla rader
-            foreach (var rad in rader)
+            //foreach (var rad in rader)
+            for (int i = 1; i < rader.Length; i++)
             {
                 // Dela upp raden
-                string[] delar = rad.Split(',');
+                string[] delar = rader[i].Split(',');
 
                 // Plocka ut land
                 string land = delar[1];
@@ -49,7 +50,7 @@ namespace Labb4
                 if (land.ToLower().Contains(sökterm.ToLower()))
                 {
                     // Skriv ut matchande land och dess landskod
-                    rutaResultat.Text = $"{antal} {land}: {landskod}\n";
+                    rutaResultat.Text += $"{antal} {land}: {landskod}\n";
                     antal++;
                 }
             }
