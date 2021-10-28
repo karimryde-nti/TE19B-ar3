@@ -5,8 +5,8 @@ namespace Inkomster
 {
     class PersonInkomst
     {
-        public string Namn = "";
-        public int Lön = 0;
+        public string Namn;
+        public int Lön;
     }
     class Program
     {
