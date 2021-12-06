@@ -5,9 +5,18 @@ namespace Inkomster
 {
     class PersonInkomst
     {
-        public string Namn;
-        public int Lön;
+        // "Variabler" för att lagra data (Egenskaper)
+        public string Namn {get; set;}  // Skydda variabeln 
+        public int Lön {get; set;}      // Skydda variabeln
+        public int Timmar {get; set;}   // Skydda variabeln
+
+        // Klassmetod
+        public void VisaTimlön()
+        {
+            Console.WriteLine($"{Namn} din timlön är {Lön/Timmar}");
+        }
     }
+
     class Program
     {
         static void Main(string[] args)
@@ -34,10 +43,24 @@ namespace Inkomster
 
                 Console.Write("Ange din månadslön: ");
                 objekt.Lön = ReadInt();
+                Console.Write("Ange antal timmar: ");
+                objekt.Timmar = ReadInt();
 
                 // Lägg in i listan
                 lista.Add(objekt);
             }
+
+            // Skriv ut lite statistik: total lön, total timmar
+            int totalLön = 0;
+            int totalTimmar = 0;
+            foreach (var anställd in lista)
+            {
+                totalLön += anställd.Lön;
+                totalTimmar += anställd.Timmar;
+                anställd.VisaTimlön();
+            }
+            Console.WriteLine($"Den total lönekostnaden är {totalLön}");
+            Console.WriteLine($"Den total inarbetad timmar är {totalTimmar}");
         }
         static int ReadInt()
         {
