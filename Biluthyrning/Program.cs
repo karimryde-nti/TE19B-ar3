@@ -28,7 +28,8 @@ namespace Biluthyrning
             Console.WriteLine("Ange antal km: ");
             Console.WriteLine("Ange antal dygn: ");
 
-            //Avtal avtal1 = new Avtal();
+            Avtal avtal1 = new Avtal();
+            Console.WriteLine(avtal1._bilar["ABC123"]);
         }
     }
 
@@ -43,15 +44,12 @@ namespace Biluthyrning
         public string Personnr { get; set; }
 
         // Private variabel
-        private IDictionary<string, int> _bilar = new Dictionary<string, int>(){
+        public IDictionary<string, int> _bilar = new Dictionary<string, int>(){
             {"ABC123", 500},
             {"DEF456", 400},
             {"GHI789", 199}
         };
 
-/*         public Avtal()
-        {
-            Console.WriteLine(_bilar["ABC123"]);
-        } */
+
     }
 }
