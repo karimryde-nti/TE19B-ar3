@@ -31,7 +31,7 @@ namespace Biluthyrningen
     class Avtal
     {
         // Egenskaper
-        public string Personnr {get; set;}
+        public string Personnr {get;}
         public DateTime Datum {get; set;}
         public string RegNr {get; set;}
         public int Km {get; set;}
