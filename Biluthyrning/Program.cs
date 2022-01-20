@@ -5,38 +5,58 @@ namespace Biluthyrningen
 {
     class Program
     {
+        // För att spara alla avtal
+        static List<Avtal> listaAvtal = new List<Avtal>();
+
         static void Main(string[] args)
         {
             Console.WriteLine("Välkommen till biluthyrningen!");
 
-            // Skapa ett första avtal = avta1
-            Avtal avtal1 = new Avtal();
+            string svar = "j";
+            while (svar == "j")
+            {
+                // Skapa ett avtal
+                Avtal avtal = new Avtal();
 
-            Console.Write("Ange kundens personnr: ");
-            avtal1.Personnr = Console.ReadLine();
-            Console.Write("Ange bilens regnr: ");
-            avtal1.RegNr = Console.ReadLine();
-            Console.Write("Ange antal km: ");
-            avtal1.Km = int.Parse(Console.ReadLine());
-            Console.Write("Ange antal dygn: ");
-            avtal1.Tidsram = int.Parse(Console.ReadLine());
-            avtal1.Datum = DateTime.Today;
+                // Spara avtalet i listan
+                listaAvtal.Add(avtal);
 
-            // Räkna ut totala kostnaden
-            Console.WriteLine($"Total hyran blir {avtal1.RäknaKostnad()}:-");
-            Console.WriteLine($"Bilen skall åter {avtal1.RäknaInlämningsdatum()}");
+                Console.Write("Ange kundens personnr: ");
+                avtal.Personnr = Console.ReadLine();
+
+                Console.Write("Ange bilens regnr: ");
+                avtal.RegNr = Console.ReadLine();
+                while (!avtal.finnsRegnr())
+                {
+                    Console.Write("Ange bilens regnr: ");
+                    avtal.RegNr = Console.ReadLine();
+                }
+
+                Console.Write("Ange antal extra km: ");
+                avtal.Km = int.Parse(Console.ReadLine());
+                Console.Write("Ange antal dygn: ");
+                avtal.Tidsram = int.Parse(Console.ReadLine());
+                avtal.Datum = DateTime.Today;
+
+                // Räkna ut totala kostnaden
+                Console.WriteLine($"Total hyran blir {avtal.RäknaKostnad()}:-");
+                Console.WriteLine($"Bilen skall åter {avtal.RäknaInlämningsdatum()}");
+
+                Console.WriteLine("Vill du mata in ett till avtal? (j/n)");
+                svar = Console.ReadLine().ToLower();
+            }
         }
     }
 
     class Avtal
     {
         // Egenskaper
-        public string Personnr {get;}
-        public DateTime Datum {get; set;}
-        public string RegNr {get; set;}
-        public int Km {get; set;}
-        public int Kostnad {get; set;}
-        public int Tidsram {get; set;}
+        public string Personnr { get; set; }
+        public DateTime Datum { get; set; }
+        public string RegNr { get; set; }
+        public int Km { get; set; }
+        public int Kostnad { get; set; }
+        public int Tidsram { get; set; }
 
         // Privat variabler som bara ska användas inuti klassen
         private IDictionary<string, int> _bilar = new Dictionary<string, int> {
@@ -45,6 +65,18 @@ namespace Biluthyrningen
             {"GHI123", 199}
         };
 
+        public bool finnsRegnr()
+        {
+            if (_bilar.ContainsKey(RegNr))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         /// <summary>
         /// Räkna ut bilens dyngskostnad * antal dygn + 2:-/km
         /// </summary>
@@ -52,9 +84,7 @@ namespace Biluthyrningen
         public int RäknaKostnad()
         {
             //Console.WriteLine(bilar["ABC123"]);           // => 500
-            // @todo inte krascha om regnr inte finns
-            // @todo 100 km ingår i hyran, bara betala för extra km
-            Kostnad = _bilar[RegNr] * Tidsram + Km * 2;     
+            Kostnad = _bilar[RegNr] * Tidsram + Km * 2;
             return Kostnad;
         }
 
