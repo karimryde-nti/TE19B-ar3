@@ -2,11 +2,22 @@
 
 namespace Intro
 {
+    /// <summary>
+    /// Basklassen
+    /// </summary>
     class Person
     {
         // prop
         public string Namn { get; set; }
         public string Mobil { get; set; }
+
+        // ctor
+        // Konstruktorn körs automatiskt vid "new"
+        public Person(string namn, string mobil)
+        {
+            Namn = namn;
+            Mobil = mobil;
+        }
 
         // func
         // En virtuell metod kan man "skriva över"
@@ -16,10 +27,17 @@ namespace Intro
         }
     }
 
+    // Klassen student utökar klassen person (bygger på)
     class Student : Person
     {
         public string Årskurs { get; set; }
         public string Program { get; set; }
+
+        public Student(string n, string m, string årskurs, string program) : base(n, m)
+        {
+            Årskurs = årskurs;
+            Program = program;
+        }
 
         // En metode som "skriver över" basklassens metod
         public override void VisaInfo()
@@ -29,10 +47,17 @@ namespace Intro
         }
     }
 
+    // Klassen Lärare utökar klassen person (bygger på)
     class Lärare : Person
     {
         public string AnställningÅr { get; set; }
         public string Ämnen { get; set; }
+
+        public Lärare(string n, string m, string anställningÅr, string ämnen) : base(n, m)
+        {
+            AnställningÅr = anställningÅr;
+            Ämnen = ämnen;
+        }
 
         public override void VisaInfo()
         {
@@ -48,10 +73,10 @@ namespace Intro
         {
             Console.WriteLine("Arv - registrera personer på skolan");
 
-/*             while (true)
-            {
-                // Skapa en instans (objekt)
-                Person person = new Person();
+            // while (true)
+            // {
+/*                 // Skapa en instans (objekt)
+                Person person = new Person();  // Person är en instans av Person()
 
                 Console.Write("Vad heter personen? ");
                 person.Namn = Console.ReadLine();
@@ -60,8 +85,10 @@ namespace Intro
 
                 Console.Write("Mata en till? (j/n)");
                 if (Console.ReadLine() != "j")
-                    break;      
-            } */
+                    break;   */ 
+            // }
+
+            Person person = new Person("Max", "070546565"); 
 
             while (true)
             {
