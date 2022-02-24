@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Labb19"
         mc:Ignorable="d"
-        Title="Mediaregister" Height="400" MinWidth="500" Width="500" Background="#EEE"
-        Closing="StängFönster">
+        Title="Mediaregister" Height="400" MinWidth="500" Width="500" Background="#EEE">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

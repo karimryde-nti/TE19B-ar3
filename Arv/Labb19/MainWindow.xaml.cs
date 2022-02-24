@@ -20,17 +20,26 @@ namespace Labb19
     /// </summary>
     public partial class MainWindow : Window
     {
+        static List<Bok> bokSamling = new List<Bok>();
+        static List<Film> filmSamling = new List<Film>();
+
         public MainWindow()
         {
             InitializeComponent();
         }
         private void KlickSparaBok(object sender, RoutedEventArgs e)
         {
-            rutaResultat.Items.Add(filmen.TillText());
+            // Skapa en instans av bok för att lagra bokens data
+            Bok boken = new Bok(rutaBoktitel.Text, rutaFörfattare.Text, rutaAntalSidor.Text);
+            bokSamling.Add(boken);
+            rutaResultat.Items.Add(boken.TillText());
         }
         private void KlickSparaFilm(object sender, RoutedEventArgs e)
         {
-            rutaResultat.Items.Add(boken.TillText());
+            // Skapa en instans av film för att lagra filmens data
+            Film filmen = new Film(rutaFilmtitel.Text, rutaRegissör.Text, rutaLängd.Text);
+            filmSamling.Add(filmen);
+            rutaResultat.Items.Add(filmen.TillText());
         }
         private void CheckaRadio(object sender, RoutedEventArgs e)
         {
