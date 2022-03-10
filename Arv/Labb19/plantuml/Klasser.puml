@@ -1,0 +1,20 @@
+@startuml
+class Media {
+}
+class Bok {
+    + Titel : string <<get>> <<set>>
+    + Författare : string <<get>> <<set>>
+    + AntalSidor : string <<get>> <<set>>
+    + Bok(titel:string, författare:string, antalSidor:string)
+    + TillText() : string
+}
+class Film {
+    + Titel : string <<get>> <<set>>
+    + Regissör : string <<get>> <<set>>
+    + Längd : string <<get>> <<set>>
+    + Film(titel:string, regissör:string, längd:string)
+    + TillText() : string
+}
+Media <|-- Bok
+Media <|-- Film
+@enduml

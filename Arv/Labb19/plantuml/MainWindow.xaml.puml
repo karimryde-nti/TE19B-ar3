@@ -1,0 +1,11 @@
+@startuml
+class MainWindow <<partial>> {
+    {static} bokSamling : List<Bok>
+    {static} filmSamling : List<Film>
+    + MainWindow()
+    - KlickSparaBok(sender:object, e:RoutedEventArgs) : void
+    - KlickSparaFilm(sender:object, e:RoutedEventArgs) : void
+    - CheckaRadio(sender:object, e:RoutedEventArgs) : void
+}
+Window <|-- MainWindow
+@enduml

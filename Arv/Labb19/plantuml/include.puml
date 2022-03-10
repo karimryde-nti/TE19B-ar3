@@ -1,0 +1,72 @@
+@startuml
+class App <<partial>> {
+}
+Application <|-- App
+class Media {
+}
+class Bok {
+    + Titel : string <<get>> <<set>>
+    + Författare : string <<get>> <<set>>
+    + AntalSidor : string <<get>> <<set>>
+    + Bok(titel:string, författare:string, antalSidor:string)
+    + TillText() : string
+}
+class Film {
+    + Titel : string <<get>> <<set>>
+    + Regissör : string <<get>> <<set>>
+    + Längd : string <<get>> <<set>>
+    + Film(titel:string, regissör:string, längd:string)
+    + TillText() : string
+}
+Media <|-- Bok
+Media <|-- Film
+class MainWindow <<partial>> {
+    {static} bokSamling : List<Bok>
+    {static} filmSamling : List<Film>
+    + MainWindow()
+    - KlickSparaBok(sender:object, e:RoutedEventArgs) : void
+    - KlickSparaFilm(sender:object, e:RoutedEventArgs) : void
+    - CheckaRadio(sender:object, e:RoutedEventArgs) : void
+}
+Window <|-- MainWindow
+class App <<partial>> {
+    + InitializeComponent() : void
+    + {static} Main() : void
+}
+class App <<partial>> {
+    + InitializeComponent() : void
+    + {static} Main() : void
+}
+class MainWindow <<partial>> {
+    <<internal>> flikar : System.Windows.Controls.TabControl
+    <<internal>> rutaFilmtitel : System.Windows.Controls.TextBox
+    <<internal>> rutaRegissör : System.Windows.Controls.TextBox
+    <<internal>> rutaLängd : System.Windows.Controls.TextBox
+    <<internal>> rutaBoktitel : System.Windows.Controls.TextBox
+    <<internal>> rutaFörfattare : System.Windows.Controls.TextBox
+    <<internal>> rutaAntalSidor : System.Windows.Controls.TextBox
+    <<internal>> rutaResultat : System.Windows.Controls.ListBox
+    <<internal>> allt : System.Windows.Controls.RadioButton
+    <<internal>> böcker : System.Windows.Controls.RadioButton
+    <<internal>> filmer : System.Windows.Controls.RadioButton
+    - _contentLoaded : bool
+    + InitializeComponent() : void
+    Connect(connectionId:int, target:object) : void
+}
+class MainWindow <<partial>> {
+    <<internal>> flikar : System.Windows.Controls.TabControl
+    <<internal>> rutaFilmtitel : System.Windows.Controls.TextBox
+    <<internal>> rutaRegissör : System.Windows.Controls.TextBox
+    <<internal>> rutaLängd : System.Windows.Controls.TextBox
+    <<internal>> rutaBoktitel : System.Windows.Controls.TextBox
+    <<internal>> rutaFörfattare : System.Windows.Controls.TextBox
+    <<internal>> rutaAntalSidor : System.Windows.Controls.TextBox
+    <<internal>> rutaResultat : System.Windows.Controls.ListBox
+    <<internal>> allt : System.Windows.Controls.RadioButton
+    <<internal>> böcker : System.Windows.Controls.RadioButton
+    <<internal>> filmer : System.Windows.Controls.RadioButton
+    - _contentLoaded : bool
+    + InitializeComponent() : void
+    Connect(connectionId:int, target:object) : void
+}
+@enduml
