@@ -54,11 +54,11 @@ namespace Labb19
             {
                 Console.WriteLine("Radiobutton allt trycktes!");
             }
-            else if (böcker.IsChecked == true)
+            if (bocker.IsChecked == true)
             {
                 Console.WriteLine("Radiobutton böcker trycktes!");
             }
-            else if (filmer.IsChecked == true)
+            if (filmer.IsChecked == true)
             {
                 Console.WriteLine("Radiobutton filmer trycktes!");
             }
