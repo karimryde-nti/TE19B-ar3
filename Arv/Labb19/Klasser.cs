@@ -4,7 +4,10 @@ namespace Labb19
 {
     public class Media
     {
-        
+        virtual public string TillText()
+        {
+            return null;
+        }
     }
     public class Bok : Media
     {
@@ -19,7 +22,7 @@ namespace Labb19
             AntalSidor = antalSidor;
         }
 
-        public string TillText()
+        override public string TillText()
         {
             return($"{Titel} ({Författare} {AntalSidor})");
         }
@@ -37,7 +40,7 @@ namespace Labb19
             Längd = längd;
         }
 
-        public string TillText()
+        override public string TillText()
         {
             return($"{Titel} ({Regissör} {Längd})");
         }

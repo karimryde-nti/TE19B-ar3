@@ -48,19 +48,53 @@ namespace Labb19
             // Fyll på i stora textrutan
             rutaResultat.Items.Add(filmen.TillText());
         }
-        private void CheckaRadio(object sender, RoutedEventArgs e)
+        private void KlickRadio(object sender, RoutedEventArgs e)
         {
-            if (allt.IsChecked == true)
+            // Alternativ 1
+            /* if (allt.IsChecked == true)
             {
                 Console.WriteLine("Radiobutton allt trycktes!");
             }
-            if (bocker.IsChecked == true)
+            else if (böcker.IsChecked == true)
             {
                 Console.WriteLine("Radiobutton böcker trycktes!");
             }
-            if (filmer.IsChecked == true)
+            else if (filmer.IsChecked == true)
             {
                 Console.WriteLine("Radiobutton filmer trycktes!");
+            } */
+
+            // Alternativ 2
+            string typ = ((RadioButton)sender).Name;
+            bool ärBok = false;
+            bool ärFilm = false;
+            switch (typ)
+            {
+                case "allt":
+                ärBok = true;
+                ärFilm = true;
+                break;
+
+                case "böcker":
+                ärBok = true;
+                break;
+
+                case "filmer":
+                ärFilm = true;
+                break;
+            }
+
+            // Loopa igenom samling
+            foreach (Media sak in samling)
+            {
+                if (sak is Bok && ärBok)
+                {
+                    rutaResultat.Items.Add(sak.TillText());
+                }
+                if (sak is Film && ärFilm)
+                {
+                    rutaResultat.Items.Add(sak.TillText());
+                }
             }
         }
     }
