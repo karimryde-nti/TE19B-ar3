@@ -63,5 +63,11 @@ namespace TryCatch
             Förnamn = förnamn;
             Efternamn = efternam;
         }
+
+        // Virual betyder att man får skriva över den
+        /* public virtual string Sammanfattning()
+        {
+            return "";
+        } */
     }
 }
